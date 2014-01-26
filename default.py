@@ -29,6 +29,7 @@ class CapturePlayer(xbmc.Player):
 				
 				udpSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 				udpSocket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+				udpSocket.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 65536)
 				udpSocket.sendto(''.join(pixelsMessage), ('127.0.0.1', 52101))
 				udpSocket.close()
 	
